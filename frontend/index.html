@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy-First AI Browser Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <h2>🛡️ PrivacyAI</h2>
+
+        <nav>
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="#protection">🔒 Protection</a>
+            <a href="#activity">📋 Activity</a>
+        </nav>
+
+        <p class="sidebar-footer">Privacy comes first.</p>
+    </aside>
+
+    <main class="main-content">
+
+        <header>
+            <h1>Privacy Dashboard</h1>
+            <p>Manage your privacy while browsing with AI.</p>
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>🛡️ Protection Status</h3>
+                <p id="status">Not Active 🔴</p>
+                <button onclick="startProtection()">Start Protection</button>
+            </div>
+
+            <div class="card">
+                <h3>🔍 Page Scanner</h3>
+                <p>Check a page for sensitive information.</p>
+                <button onclick="scanPage()">Scan This Page</button>
+            </div>
+
+            <div class="card">
+                <h3>🔐 Privacy Engine</h3>
+                <p id="engineStatus">Waiting to start</p>
+            </div>
+
+        </section>
+
+        <section class="activity" id="activity">
+            <h2>Recent Activity</h2>
+            <p id="activityText">No activity yet. Start by scanning a page.</p>
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+function scanPage() {
+    alert("Page scanning feature is coming soon!");
+    document.getElementById("activityText").innerText =
+        "Scan button clicked. Actual scanning is not implemented yet.";
+}
+
+function startProtection() {
+    document.getElementById("status").innerText = "Active 🟢";
+    document.getElementById("engineStatus").innerText = "Protection enabled (demo)";
+    document.getElementById("activityText").innerText =
+        "Protection button clicked. Actual privacy protection is not implemented yet.";
+}
+</script>
+
+</body>
+</html>
+
