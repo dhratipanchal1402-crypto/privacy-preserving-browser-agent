@@ -42,6 +42,14 @@
                 <h3>🔍 Page Scanner</h3>
                 <p>Check a page for sensitive information.</p>
                 <button onclick="scanPage()">Scan This Page</button>
+                <p id="pageText">
+                    Contact us at help@example.com or call 9876543210.
+                </p>
+                <textarea id="userText" placeholder="Enter text to scan here..."></textarea>
+
+                <button onclick="scanCustomText()">Scan My Text</button>
+
+                <p id="customResult"></p>
             </div>
 
             <div class="card">
@@ -61,17 +69,67 @@
 </div>
 
 <script>
-function scanPage() {
-    alert("Page scanning feature is coming soon!");
-    document.getElementById("activityText").innerText =
-        "Scan button clicked. Actual scanning is not implemented yet.";
+
+
+async function scanPage() {
+    const text = document.getElementById("pageText").innerText;
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/scan", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text: text })
+        });
+
+        const data = await response.json();
+
+        document.getElementById("activityText").innerText =
+            "Masked result: " + data.masked_text;
+
+    }
+    catch (error) {
+        alert("Backend connection failed. Check if server is running.");
+    }
 }
+
+
 
 function startProtection() {
     document.getElementById("status").innerText = "Active 🟢";
     document.getElementById("engineStatus").innerText = "Protection enabled (demo)";
     document.getElementById("activityText").innerText =
         "Protection button clicked. Actual privacy protection is not implemented yet.";
+}
+</script>
+
+<script>
+async function scanCustomText() {
+    const text = document.getElementById("userText").value;
+
+    if (!text.trim()) {
+        alert("Please enter some text first!");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/scan", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text: text })
+        });
+
+        const data = await response.json();
+
+        document.getElementById("customResult").innerText =
+            "Masked Result: " + data.masked_text;
+
+    } catch (error) {
+        alert("Backend connect nahi hua. Check karo server running hai ya nahi.");
+    }
 }
 </script>
 
