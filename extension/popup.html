@@ -1,19 +1,68 @@
-
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Privacy Agent</title>
     <style>
-        body { width: 300px; padding: 15px; font-family: Arial; }
-        button { padding: 10px; cursor: pointer; }
-        #result { white-space: pre-wrap; overflow-wrap: anywhere; }
-    </style>
+        body {
+            width: 300px;
+            padding: 15px;
+            font-family: Arial;
+        }
+
+```
+    button {
+        padding: 10px;
+        margin: 5px 2px;
+        cursor: pointer;
+    }
+
+    #result {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+    #permission {
+        display: none;
+        margin-top: 15px;
+    }
+
+    #yesBtn {
+        background: green;
+        color: white;
+    }
+
+    #noBtn {
+        background: #b22222;
+        color: white;
+    }
+</style>
+```
+
 </head>
+
 <body>
-    <h3>Privacy Agent</h3>
-    <button id="scanBtn">Scan This Page</button>
-    <p id="status">Ready to scan.</p>
-    <div id="result"></div>
-    <script src="popup.js"></script>
+
+```
+<h3>Privacy Agent 🔐</h3>
+
+<button id="scanBtn">Scan This Page</button>
+
+<p id="status">Ready to scan.</p>
+
+<div id="result"></div>
+
+<div id="permission">
+    <p> Sensitive information detected!</p>
+    <p>Do you want to mask it?</p>
+
+    <button id="yesBtn">Yes, Mask Data</button>
+
+    <button id="noBtn">No, Continue</button>
+</div>
+
+<script src="popup.js"></script>
+```
+
 </body>
 </html>
